@@ -1,0 +1,46 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: default-sc-pvc
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-with-default-sc-pvc
+  namespace: default
+spec:
+  replicas: 1  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: default-sc-pvc
+      containers:
+        - name: utho
+          image: nginx
+          command:
+            - "/bin/sh"
+            - "-c"
+            - |
+              while true; do
+                echo "$(date): Hello, World!" >> /data/myfile.txt && cat /data/myfile.txt;
+                sleep 5;
+              done
+          volumeMounts:
+            - mountPath: /data
+              name: volume
