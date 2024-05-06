@@ -33,3 +33,58 @@ kubectl apply -f https://raw.githubusercontent.com/uthoplatforms/examples/main/p
 For dynamic provisioning of storage class, applications need to create Persistent Volume Claims (PVCs) to obtain persistent volume (storage) in the cluster. Based on application requirements, storage can be selected, and if the application does not define a storage class in the PVC, the default storage class (openebs(default)) will be assigned automatically.
 
 
+# Utho Kubernetes Cluster (UKC) Load Balancer
+
+## Step 1
+
+Deploy Loadbalancer via API or via Utho Console https://console.utho.com
+## [Loadbalancer Rest API Docs](https://utho.com/api-docs/#api-Load-Balancer-addloadbalancer)
+## [Utho Console](https://console.utho.com)
+
+
+## Step 2
+
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
+```
+
+## Step 3 ( this step will nginx service to use given public ip and service will not be in pending mode)
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+    app.kubernetes.io/version: 1.10.0
+  name: ingress-nginx-controller
+  namespace: ingress-nginx
+spec:
+  externalTrafficPolicy: Local
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - appProtocol: http
+    name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  - appProtocol: https
+    name: https
+    port: 443
+    protocol: TCP
+    targetPort: https
+  externalIPs:
+  - Public IP  ### change here with your real public ip of loadbalancer 
+  loadBalancerIP: Public IP ## change here with your real public ip loadbalancer 
+  selector:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/name: ingress-nginx
+  type: LoadBalancer
+ ```
+
