@@ -37,9 +37,10 @@ For dynamic provisioning of storage class, applications need to create Persisten
 
 ## Step 1
 
-Deploy Loadbalancer via API or via Utho Console https://console.utho.com
-[Loadbalancer Rest API Docs](https://utho.com/api-docs/#api-Load-Balancer-addloadbalancer)
-[Utho Console](https://console.utho.com)
+Deploy Loadbalancer via API or via Utho Console 
+
+### [Loadbalancer Rest API Docs](https://utho.com/api-docs/#api-Load-Balancer-addloadbalancer)
+### [Utho Console](https://console.utho.com)
 
 
 ## Step 2
