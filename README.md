@@ -1,5 +1,18 @@
 # Utho Kubernetes Cluster (UKC) Storage Classes
 
+## Deploy Nginx as Node Port 
+
+kubectl apply -f https://raw.githubusercontent.com/uthoplatforms/examples/main/nginx-deployment-service.yaml
+
+kubectl get services -o wide
+
+Deploy Loadbalancer via API or via Utho Console 
+## Add backend to Loadbalancer by selecting Kubernetes Nodepool or Mannual External IP Address of worker nodes with nodeport as backend port.
+
+### [Loadbalancer Rest API Docs](https://utho.com/api-docs/#api-Load-Balancer-addloadbalancer)
+### [Utho Console](https://console.utho.com)
+
+
 ## openebs (default)
 
 This is the default storage class, providing read-write once access to applications on storage. If the application does not specify a storage class in the PersistentVolumeClaim (PVC), this storage class will be automatically assigned.
