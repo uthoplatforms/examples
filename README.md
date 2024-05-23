@@ -7,9 +7,9 @@ kubectl apply -f https://raw.githubusercontent.com/uthoplatforms/examples/main/n
 kubectl get services -o wide
 
 Deploy Loadbalancer via API or via Utho Console 
-## Add backend to Loadbalancer by selecting Kubernetes Nodepool or Mannual External IP Address of worker nodes with nodeport as backend port.
+Add backend to Loadbalancer by selecting Kubernetes Nodepool or Mannual External IP Address of worker nodes with nodeport as backend port.
 
-### [Loadbalancer Rest API Docs](https://utho.com/api-docs/#api-Load-Balancer-addloadbalancer)
+[Loadbalancer Rest API Docs](https://utho.com/api-docs/#api-Load-Balancer-addloadbalancer)
 ### [Utho Console](https://console.utho.com)
 
 
