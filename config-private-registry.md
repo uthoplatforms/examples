@@ -3,9 +3,7 @@
 To integrate Utho's registry with Utho's UKS using kubectl, you can create a Kubernetes secret to store the Docker credentials and configure the Kubernetes service account to use this secret for pulling images. Here's a step-by-step guide on how to achieve this:
 
 
-# Step 1: Encode the Credentials
-## Create a Docker Registry Secret
-Create a Kubernetes secret to store the Docker registry credentials.
+## Step1: Create a Docker Registry Secret
 
 Create a Kubernetes secret to store the Docker registry credentials.
 
