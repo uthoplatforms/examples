@@ -5,9 +5,15 @@ To integrate Utho's registry with Utho's UKS using kubectl, you can create a Kub
 
 ## Step1: Create a Docker Registry Secret
 
+
+
 Create a Kubernetes secret to store the Docker registry credentials.
 
 ```sh
+
+REGISTRY_USERNAME='<registry_username>'
+REGISTRY_PASSWORD='<registry_password>'
+
 kubectl create secret docker-registry utho-registry-secret \
   --docker-server=registry.utho.io \
   --docker-username=$REGISTRY_USERNAME \
