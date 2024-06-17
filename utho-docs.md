@@ -162,6 +162,12 @@ For more information about using Git, refer to the [official Git documentation](
 
     - **SSH URL:** `git remote add upstream git@github.com:uthoplatforms/utho-docs.git`
     - **HTTPS URL:** `git remote add upstream https://github.com:uthoplatforms/utho-docs.git`
+  
+        git remote add upstream git@github.com:uthoplatforms/utho-docs.git
+
+        git fetch upstream
+
+
 
 1.  View your remote repositories by running:
 
