@@ -41,7 +41,8 @@ metadata:
 spec:
   loadBalancer:
     name: nl-lb
-    dcslug: innoida
+    dcslug: inmumbaizone2
+    # DCslug is Datacenter Zone where Kubernetes Cluster deployed, Available values: innoida,inmumbaizone2,inbangalore,defra1,uslosangeles
     # Node exposed port the loadblancer will forwad request to
     backendPort: 30088
     frontend:
