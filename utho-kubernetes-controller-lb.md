@@ -5,6 +5,30 @@ The Utho Cloud Controller supports provisioning Utho Load Balancers in a cluster
 
 The Utho Load Balancer Service routes load balancer traffic to all worker nodes on the cluster. Only nodes configured to accept the traffic pass health checks.
 
+## Install the controller
+### Prerequisites
+- You need to have [Helm CLI](https://helm.sh/docs/helm/helm_install/) installed on your machine.
+- You must have an [Utho API Key](https://console.utho.com/api).
+
+### Install the Cloud Controller Helm Chart
+To install the chart with the release name `utho-app-operator`:
+
+Add the Utho Operator Repository to your Helm repositories:
+```bash
+helm repo add utho-operator https://uthoplatforms.github.io/utho-app-operator-helm/
+```
+
+```bash
+helm repo update
+```
+
+Install the Utho Operator Chart:
+
+Note: make sure to set the Utho API Key
+```bash
+helm install utho-app-operator utho-operator/utho-app-operator-chart --version 0.1.5 --set API_KEY=<YOUR_API_KEY> --set image.tag=0.1.4 -n <namespace> --create-namespace
+```
+
 ## Create a Configuration File for Network Loadblancer
 
 You can update the backend port that the Loadblancer will listen to 
